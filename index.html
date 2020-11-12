@@ -45,7 +45,7 @@
 
 				<!-- Two -->
 					<section id="two">
-						<h2>Recent Posts</h2>
+						<h2>Recent Projects</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="networks.html" class="image fit thumb"><img src="images/thumbs/01.gif" alt="" /></a>
@@ -84,6 +84,11 @@
 					</section>
 
 				<!-- Three -->
+
+					<section id="three">
+						<h2>My latest Medium Reads</h2>
+						<div id="medium-widget"></div>
+					</section>
 					<!-- <section id="three">
 						<h2>Get In Touch</h2>
 						<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
@@ -462,6 +467,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<!-- scripts to embed medium feed. Source: https://medium-widget.pixelpoint.io/ -->
+			<script src="https://medium-widget.pixelpoint.io/widget.js"></script>
+			<script>MediumWidget.Init({renderTo: '#medium-widget', params: {"resource":"https://medium.com/@mrohleder","postsPerLine":2,"limit":4,"picture":"big","fields":["description","author"],"ratio":"landscape"}})</script>
 	</body>
 </html>
