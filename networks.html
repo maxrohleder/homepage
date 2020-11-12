@@ -17,10 +17,11 @@
 		<header id="header">
 			<div class="inner">
 				<a href="/" class="image avatar"><img src="images/avatar.jpg" alt="Max with Sunglasses" /></a>
-				<h1><strong>Maximilian Rohleder</strong><br>
-					passionate sailor, <br>
-					AI enthusiast,<br>
-					student.<br></h1>
+				<h1>Written by:<br>
+					<strong>Maximilian Rohleder</strong><br>
+					in Oktober 2020.<br>
+					Project from 10/2017.
+				</h1>
 			</div>
 		</header>
 
@@ -32,13 +33,13 @@
 						<header class="major">
 							<h2>A simple introduction to Neural Networks.</h2>
 						</header>
-						<p>When I was in the third semester of my bachelors degree program, I read this fascinating
-							book about how the human brain. It was called <a href="https://http://www.howtocreateamind.com/">How To Create a Mind</a> 
-							and written by the director of engineering at Google (at that time at least). The idea, that the inner
-							workings of the human brain can be understood so far that we can reverse engineer learning blew me away completely.
-							Instead of concentrating on (at the time) boring subjects in school, I tried to implement the concepts introduced
-							in the book. This post seeks to capture that enthusiasm I felt when I was putting my fairly poor javascript 
-							knowledge to work to create the animation below.
+						<p>When I was in the third semester of my bachelors degree, I read this fascinating
+							book about the human brain. It was called <a href="https://http://www.howtocreateamind.com/">How To Create a Mind</a> 
+							and was written by the director of engineering at Google (at that time). In addition to introducing the
+							actual brain structure briefly, it focusses on reverse engineer the observed learning mechanisms.
+							At that time, I did not have the knowledge of the math nor the coding experience to understand it all in depth, but I was
+							so fascinated with the idea, that I tried to implement it anyway. This post aims to archive
+							the fascination I felt for the idea of teaching a machine how to learn!
 						</p>
 						<!-- <ul class="actions">
 							<li><a href="#" class="button">Learn More</a></li>
@@ -48,8 +49,37 @@
 				<!-- Two -->
 					<section>
 						<h5>Left &amp; Right</h5>
-						<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+						<p><span class="image left"><img src="https://pixabay.com/de/images/download/neurons-440660_640.jpg?attachment" alt="" /></span>
+							The human brain is composed of a gigantic amont of neurons. 
+							These specialised cells have an internal charge, that can be increased or decreased by other neurons that are connected to it.
+							All neurons in the brain are doing the same thing simultaneously.
+							Each neuron accumulates incoming stimuli, which increase or decrease its internal charge.
+							If the internal charge level surpasses a certain threshold, it fires and stimulates all neurons it is connected to.
+							This simple mechanism allows us to perceive, learn and act accordingly.
+							If we are able to model this mechanism in-silico, then we should theoretically be able to reverse engineer brain functions!
+							So lets dive right in and model a single neuron!
+						</p>
+						<p><span class="image right"><img src="images/model.jpg" alt="" /></span>
+							If we take a look at the model on the right, we see all necessary parts of the neuron.
+							There are incoming connections from other neurons, the neuron body and the neurons outgoing connection.
+							Now, how do we model the effect, that an incoming signal can have both an inhibitory and exhibitory effect on the neuron charge?
+							First we have to talk about the incoming signal. 
+							In nature we observe, that the neuron either does not fire at all, or proportionally strong to its inner charge. 
+							If we stick to this assumption, then the incoming signals can be either zero or a positive number.
+							Concludingly, the incoming connections can only have an excitatory effect on the neuron potential!
+							We define, that positive numbers correspond with excitatory signals, whereas negative signals model inhibitory influence.
+							To enable the neuron to regulate how incoming signals influence its own state, we introduce weights.
+							There is one weigth per incoming connection and a so called bias.
+							Each weight is multiplied with the incoming signal and can influence its strength and its sign.
+							This bias can model how easy it is to get that neuron to fire.
+							Now, the model already does a good job at weigthing its incoming connections and summing them up to compute its inner charge.
+							In code, this is: <code>net = x1*w1 + x2*w2 + x3*w3 + b</code>.
+							The only thing left to model now is when a neuron fires.
+							We do that by applying a so called "activation function".
+							The easiest function is called ReLU and it only allows the neuron to pass on a signal, if its inner charge is larger than zero.
+							In code, this function is simply: <code>Y = max(0, net)</code> 
+						</p>
+
 					</section>
 
 				
